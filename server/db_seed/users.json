@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "6a2ea25e4435aaf033cc503d",
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "role": "admin",
+    "avatar": "",
+    "status": "active",
+    "createdAt": "2026-06-14T12:45:18.396Z",
+    "updatedAt": "2026-06-14T13:03:44.151Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea25e4435aaf033cc503f",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "role": "user",
+    "avatar": "",
+    "status": "active",
+    "createdAt": "2026-06-14T12:45:18.989Z",
+    "updatedAt": "2026-06-14T13:04:02.339Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea25f4435aaf033cc5041",
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "role": "user",
+    "avatar": "",
+    "status": "active",
+    "createdAt": "2026-06-14T12:45:19.632Z",
+    "updatedAt": "2026-06-14T12:45:19.632Z",
+    "__v": 0
+  }
+]

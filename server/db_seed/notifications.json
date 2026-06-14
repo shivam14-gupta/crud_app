@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "6a2ea2604435aaf033cc504d",
+    "userId": "6a2ea25e4435aaf033cc503f",
+    "title": "Welcome",
+    "message": "Welcome to the platform!",
+    "isRead": false,
+    "createdAt": "2026-06-14T12:45:20.278Z",
+    "updatedAt": "2026-06-14T12:45:20.278Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc504f",
+    "userId": "6a2ea25f4435aaf033cc5041",
+    "title": "Welcome",
+    "message": "Welcome to the platform!",
+    "isRead": false,
+    "createdAt": "2026-06-14T12:45:20.282Z",
+    "updatedAt": "2026-06-14T12:45:20.282Z",
+    "__v": 0
+  }
+]

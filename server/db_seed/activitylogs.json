@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "6a2ea2604435aaf033cc5051",
+    "userId": "6a2ea25e4435aaf033cc503d",
+    "action": "SEED",
+    "description": "Database seeded with initial data",
+    "createdAt": "2026-06-14T12:45:20.286Z",
+    "updatedAt": "2026-06-14T12:45:20.286Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc5052",
+    "userId": "6a2ea25e4435aaf033cc503f",
+    "action": "REGISTER",
+    "description": "User registered",
+    "createdAt": "2026-06-14T12:45:20.286Z",
+    "updatedAt": "2026-06-14T12:45:20.286Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc5053",
+    "userId": "6a2ea25f4435aaf033cc5041",
+    "action": "REGISTER",
+    "description": "User registered",
+    "createdAt": "2026-06-14T12:45:20.286Z",
+    "updatedAt": "2026-06-14T12:45:20.286Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea6ab63121cc1d9655d93",
+    "userId": "6a2ea25e4435aaf033cc503d",
+    "action": "LOGIN",
+    "description": "User logged in",
+    "createdAt": "2026-06-14T13:03:39.568Z",
+    "updatedAt": "2026-06-14T13:03:39.568Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea6b063121cc1d9655da5",
+    "userId": "6a2ea25e4435aaf033cc503d",
+    "action": "LOGOUT",
+    "description": "User logged out",
+    "createdAt": "2026-06-14T13:03:44.156Z",
+    "updatedAt": "2026-06-14T13:03:44.156Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea6b563121cc1d9655da9",
+    "userId": "6a2ea25e4435aaf033cc503f",
+    "action": "LOGIN",
+    "description": "User logged in",
+    "createdAt": "2026-06-14T13:03:49.630Z",
+    "updatedAt": "2026-06-14T13:03:49.630Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea6c263121cc1d9655de9",
+    "userId": "6a2ea25e4435aaf033cc503f",
+    "action": "LOGOUT",
+    "description": "User logged out",
+    "createdAt": "2026-06-14T13:04:02.344Z",
+    "updatedAt": "2026-06-14T13:04:02.344Z",
+    "__v": 0
+  }
+]

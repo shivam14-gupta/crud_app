@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "6a2ea2604435aaf033cc5043",
+    "title": "Project Proposal",
+    "description": "Initial project proposal for Q4",
+    "status": "approved",
+    "createdBy": "6a2ea25e4435aaf033cc503f",
+    "assignedTo": null,
+    "createdAt": "2026-06-14T12:45:20.262Z",
+    "updatedAt": "2026-06-14T12:45:20.262Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc5045",
+    "title": "Budget Report",
+    "description": "Quarterly budget review",
+    "status": "pending",
+    "createdBy": "6a2ea25f4435aaf033cc5041",
+    "assignedTo": null,
+    "createdAt": "2026-06-14T12:45:20.266Z",
+    "updatedAt": "2026-06-14T12:45:20.266Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc5047",
+    "title": "Marketing Plan",
+    "description": "Digital marketing strategy for 2025",
+    "status": "pending",
+    "createdBy": "6a2ea25e4435aaf033cc503f",
+    "assignedTo": null,
+    "createdAt": "2026-06-14T12:45:20.268Z",
+    "updatedAt": "2026-06-14T12:45:20.268Z",
+    "__v": 0
+  }
+]

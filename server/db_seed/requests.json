@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "6a2ea2604435aaf033cc5049",
+    "userId": "6a2ea25e4435aaf033cc503f",
+    "recordId": "6a2ea2604435aaf033cc5043",
+    "status": "approved",
+    "feedback": "Approved with minor revisions",
+    "createdAt": "2026-06-14T12:45:20.271Z",
+    "updatedAt": "2026-06-14T12:45:20.271Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ea2604435aaf033cc504b",
+    "userId": "6a2ea25f4435aaf033cc5041",
+    "recordId": "6a2ea2604435aaf033cc5045",
+    "status": "pending",
+    "feedback": "",
+    "createdAt": "2026-06-14T12:45:20.274Z",
+    "updatedAt": "2026-06-14T12:45:20.274Z",
+    "__v": 0
+  }
+]
