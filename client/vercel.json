@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://crud-app-backend.onrender.com/api/:path*"
+      "source": "/api/(.*)",
+      "destination": "https://mern-management-server.vercel.app/api/$1"
     },
     {
-      "source": "/((?!api).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
