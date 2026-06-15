@@ -53,6 +53,19 @@ app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/activity-logs', require('./routes/activityLogRoutes'));
 
+app.get('/', (req, res) => {
+  const mongoose = require('mongoose');
+  const state = mongoose.connection.readyState;
+  const stateMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
+  res.json({
+    server: 'running',
+    database: stateMap[state] || 'unknown',
+    environment: process.env.NODE_ENV || 'development',
+    platform: isVercel ? 'vercel' : 'local',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
