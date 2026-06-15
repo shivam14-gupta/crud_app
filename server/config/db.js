@@ -2,11 +2,15 @@ const mongoose = require('mongoose');
 
 let cachedDb = null;
 let lastError = null;
+let connectionState = 'disconnected';
+
+mongoose.connection.on('connected', () => { connectionState = 'connected'; });
+mongoose.connection.on('disconnected', () => { connectionState = 'disconnected'; });
+mongoose.connection.on('connecting', () => { connectionState = 'connecting'; });
+mongoose.connection.on('disconnecting', () => { connectionState = 'disconnecting'; });
 
 const connectDB = async () => {
-  if (cachedDb) {
-    return cachedDb;
-  }
+  if (cachedDb) return cachedDb;
 
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
@@ -24,7 +28,7 @@ const connectDB = async () => {
   }
 };
 
-const getLastError = () => lastError;
+const getStatus = () => ({ state: connectionState, lastError });
 
 module.exports = connectDB;
-module.exports.getLastError = getLastError;
+module.exports.getStatus = getStatus;

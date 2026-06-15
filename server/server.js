@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
+const initDB = require('./config/init');
 const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config({ path: __dirname + '/.env', silent: true });
@@ -13,7 +14,9 @@ const app = express();
 
 const isVercel = process.env.VERCEL === '1';
 
-connectDB().catch(() => {});
+connectDB()
+  .then(() => initDB())
+  .catch(() => {});
 
 app.use(helmet());
 app.use(cors({
@@ -34,12 +37,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  const state = mongoose.connection.readyState;
-  const stateMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
+  const status = connectDB.getStatus();
   res.json({
     server: 'running',
-    database: stateMap[state] || 'unknown',
-    lastError: connectDB.getLastError() || null,
+    database: status.state,
+    lastError: status.lastError,
     environment: process.env.NODE_ENV || 'development',
     platform: isVercel ? 'vercel' : 'local',
     timestamp: new Date().toISOString(),
