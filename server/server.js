@@ -6,11 +6,15 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
-dotenv.config();
+dotenv.config({ path: __dirname + '/.env', silent: true });
 
 const app = express();
 
-connectDB();
+const isVercel = process.env.VERCEL === '1';
+
+if (!isVercel) {
+  connectDB();
+}
 
 app.use(helmet());
 app.use(cors({
@@ -18,15 +22,28 @@ app.use(cors({
   credentials: true,
 }));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: { message: 'Too many requests, please try again later' },
-});
-app.use('/api/auth', limiter);
+if (!isVercel) {
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: { message: 'Too many requests, please try again later' },
+  });
+  app.use('/api/auth', limiter);
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+if (isVercel) {
+  app.use(async (req, res, next) => {
+    try {
+      await connectDB();
+      next();
+    } catch (err) {
+      return res.status(500).json({ message: 'Database connection failed' });
+    }
+  });
+}
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
@@ -44,7 +61,7 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV !== 'vercel') {
+if (!isVercel) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
