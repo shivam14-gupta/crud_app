@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -34,13 +35,27 @@ if (!isVercel) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+  const state = mongoose.connection.readyState;
+  const stateMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
+  res.json({
+    server: 'running',
+    database: stateMap[state] || 'unknown',
+    lastError: connectDB.getLastError() || null,
+    environment: process.env.NODE_ENV || 'development',
+    platform: isVercel ? 'vercel' : 'local',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 if (isVercel) {
   app.use(async (req, res, next) => {
+    if (mongoose.connection.readyState === 1) return next();
     try {
       await connectDB();
       next();
     } catch (err) {
-      return res.status(500).json({ message: 'Database connection failed' });
+      return res.status(500).json({ message: 'Database connection failed', error: err.message });
     }
   });
 }
@@ -52,19 +67,6 @@ app.use('/api/requests', require('./routes/requestRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/activity-logs', require('./routes/activityLogRoutes'));
-
-app.get('/', (req, res) => {
-  const mongoose = require('mongoose');
-  const state = mongoose.connection.readyState;
-  const stateMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
-  res.json({
-    server: 'running',
-    database: stateMap[state] || 'unknown',
-    environment: process.env.NODE_ENV || 'development',
-    platform: isVercel ? 'vercel' : 'local',
-    timestamp: new Date().toISOString(),
-  });
-});
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
