@@ -13,9 +13,7 @@ const app = express();
 
 const isVercel = process.env.VERCEL === '1';
 
-if (!isVercel) {
-  connectDB();
-}
+connectDB().catch(() => {});
 
 app.use(helmet());
 app.use(cors({
@@ -55,7 +53,7 @@ if (isVercel) {
       await connectDB();
       next();
     } catch (err) {
-      return res.status(500).json({ message: 'Database connection failed', error: err.message });
+      return res.status(500).json({ error: 'Database connection failed' });
     }
   });
 }
